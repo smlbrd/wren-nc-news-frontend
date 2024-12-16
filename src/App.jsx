@@ -1,15 +1,20 @@
 import './styles/App.css';
-import { Route, Routes } from 'react-router';
-import ViewHome from './components/ViewHome';
-import ViewArticle from './components/ViewArticle';
+import { Navigate, Route, Routes } from 'react-router';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import ArticleList from './components/ArticleList';
+import ArticlePage from './components/ArticlePage';
 
 function App() {
   return (
     <>
+      <Header />
       <Routes>
-        <Route path="/articles" element={<ViewHome />} />
-        <Route path="/articles/:article_id" element={<ViewArticle />} />
+        <Route path="/articles" element={<ArticleList />} />
+        <Route path="/articles/:article_id" element={<ArticlePage />} />
+        <Route path="*" element={<Navigate to="/articles" />} />
       </Routes>
+      <Footer />
     </>
   );
 }
