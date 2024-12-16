@@ -19,7 +19,7 @@ function ArticleCard({
         <h2>{title}</h2>
       </Link>
       <div>{date}</div>
-      {/* TODO: Replace h4 with react-router Links to Topic views */}
+      {/* TODO: Replace with react-router Links to Topic views */}
       <div>{topic}</div>
     </div>
   );
