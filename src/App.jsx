@@ -1,9 +1,14 @@
 import './App.css';
+import ArticleList from './components/ArticleList';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 function App() {
   return (
     <>
-      <h1>NC News</h1>
+      <Header />
+      <ArticleList />
+      <Footer />
     </>
   );
 }
