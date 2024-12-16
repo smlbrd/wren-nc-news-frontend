@@ -1,14 +1,15 @@
-import './App.css';
-import ArticleList from './components/ArticleList';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import './styles/App.css';
+import { Route, Routes } from 'react-router';
+import ViewHome from './components/ViewHome';
+import ViewArticle from './components/ViewArticle';
 
 function App() {
   return (
     <>
-      <Header />
-      <ArticleList />
-      <Footer />
+      <Routes>
+        <Route path="/articles" element={<ViewHome />} />
+        <Route path="/articles/:article_id" element={<ViewArticle />} />
+      </Routes>
     </>
   );
 }
