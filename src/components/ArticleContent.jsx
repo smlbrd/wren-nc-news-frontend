@@ -1,23 +1,23 @@
 import '../styles/ArticleContent.css';
 import timestampToDate from '../utils/timestampToDate';
+import VoteHandler from './VoteHandler';
 
-function ArticleContent(article) {
-  const {
-    article_img_url,
-    author,
-    body,
-    comment_count,
-    created_at,
-    title,
-    topic,
-    votes,
-  } = article;
-
+function ArticleContent({
+  article_id,
+  article_img_url,
+  author,
+  body,
+  comment_count,
+  created_at,
+  title,
+  topic,
+  votes,
+}) {
   const date = String(timestampToDate(created_at));
 
   return (
     <div className="article-content">
-      <h1 className="article-title">{article.title}</h1>
+      <h1 className="article-title">{title}</h1>
       <img
         className="article-image"
         src={article_img_url}
@@ -27,7 +27,9 @@ function ArticleContent(article) {
       <div className="article-date">{date}</div>
       <div className="article-body">{body}</div>
       <div className="article-topic">{topic}</div>
-      <div className="article-votes">{votes} votes</div>
+      <div className="article-votes">
+        <VoteHandler article_id={article_id} votes={votes} />
+      </div>
       <div className="article-comment-count">{comment_count} comments</div>
     </div>
   );
