@@ -1,7 +1,7 @@
 import '../styles/ArticlePage.css';
 import timestampToDate from '../utils/timestampToDate';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { getArticleById } from '../api/api';
 
 function ArticlePage() {

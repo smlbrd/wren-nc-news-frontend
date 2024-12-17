@@ -1,5 +1,5 @@
 import './styles/App.css';
-import { Navigate, Route, Routes } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import ArticleList from './components/ArticleList';

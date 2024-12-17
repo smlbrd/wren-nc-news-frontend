@@ -6,12 +6,17 @@
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   list-style-type: none;
+  font-size: 1vw;
+  max-width: 100vw;
 }
 
-.div1 {
+.card-container img {
+  width: 40vw;
+}
+
+/* .div1 {
   grid-area: 1 / 1 / 2 / 3;
-  max-width: fit-content;
-  margin-inline: auto;
+  max-width: 100%;
 }
 .div2 {
   grid-area: 2 / 1 / 3 / 2;
@@ -39,4 +44,4 @@
 }
 .div10 {
   grid-area: 6 / 1 / 7 / 2;
-}
+} */
