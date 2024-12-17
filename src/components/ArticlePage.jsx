@@ -5,13 +5,16 @@ import { useParams } from 'react-router';
 import { getArticleById } from '../api/api';
 
 function ArticlePage() {
+  const [isLoading, setIsLoading] = useState(false);
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
 
   useEffect(() => {
+    setIsLoading(true);
     getArticleById(article_id)
       .then(({ article }) => {
         setArticle(article);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error, 'ruh roh!');
@@ -33,18 +36,31 @@ function ArticlePage() {
 
   return (
     <>
-      <h1 className="article-title">{article.title}</h1>
-      <img
-        className="article-image"
-        src={article_img_url}
-        alt={`Banner image for ${title}`}
-      />
-      <h2 className="article-author">{author}</h2>
-      <div className="article-date">{date}</div>
-      <div className="article-body">{body}</div>
-      <div className="article-topic">{topic}</div>
-      <div className="article-votes">{votes} votes</div>
-      <div className="article-comment-count">{comment_count} comments</div>
+      <>
+        {isLoading ? (
+          <p className="loading">
+            Watching thousands of pages zoom past like the newspaper machines in
+            the movies...
+          </p>
+        ) : (
+          <>
+            <h1 className="article-title">{article.title}</h1>
+            <img
+              className="article-image"
+              src={article_img_url}
+              alt={`Banner image for ${title}`}
+            />
+            <h2 className="article-author">{author}</h2>
+            <div className="article-date">{date}</div>
+            <div className="article-body">{body}</div>
+            <div className="article-topic">{topic}</div>
+            <div className="article-votes">{votes} votes</div>
+            <div className="article-comment-count">
+              {comment_count} comments
+            </div>
+          </>
+        )}
+      </>
     </>
   );
 }
