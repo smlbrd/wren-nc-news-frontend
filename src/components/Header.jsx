@@ -1,13 +1,13 @@
 import '../styles/Header.css';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <Link to={`/articles`}>
         <h1>NC News</h1>
       </Link>
-    </div>
+    </header>
   );
 }
 
