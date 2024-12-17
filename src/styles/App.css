@@ -2,3 +2,7 @@
   margin: 0;
   padding: 2rem;
 }
+
+.loading {
+  text-align: center;
+}
