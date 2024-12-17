@@ -6,6 +6,7 @@
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   border: 2px solid white;
+  list-style-type: none;
 }
 
 .div1 {
