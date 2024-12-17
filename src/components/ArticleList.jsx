@@ -24,15 +24,9 @@ function ArticleList() {
       {isLoading ? (
         <p className="loading">Starting to spread the news...</p>
       ) : (
-        <ul className="card-container">
-          {articleList.map((article, index) => {
-            return (
-              <ArticleCard
-                key={article.article_id}
-                cardId={index}
-                {...article}
-              />
-            );
+        <ul className="article-list">
+          {articleList.map((article) => {
+            return <ArticleCard key={article.article_id} {...article} />;
           })}
         </ul>
       )}
