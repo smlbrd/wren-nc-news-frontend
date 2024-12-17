@@ -15,7 +15,7 @@ function VoteHandler({ article_id, votes }) {
   function handleClick() {
     if (!isClicked) {
       setError(null);
-      patchVotesByArticleId(article_id, { inc_votes: 1 }).catch((error) => {
+      patchVotesByArticleId(article_id, { inc_votes: 1 }).catch(() => {
         setError('Something went wrong. Please try again later!');
         setVoteAdded((currentVotesAdded) => {
           return currentVotesAdded - 1;
