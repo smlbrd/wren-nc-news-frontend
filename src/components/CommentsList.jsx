@@ -21,7 +21,7 @@ function CommentsList({ article_id }) {
   return (
     <>
       {isLoading ? (
-        <p>Now loading</p>
+        <p>Listening to the people...</p>
       ) : (
         <ul className="comments-list">
           {commentsList.map((comment) => {

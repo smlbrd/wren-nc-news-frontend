@@ -1,9 +1,8 @@
-import '../styles/ArticlePage.css';
-import timestampToDate from '../utils/timestampToDate';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById } from '../api/api';
 import CommentsList from './CommentsList';
+import ArticleContent from './ArticleContent';
 
 function ArticlePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,19 +21,6 @@ function ArticlePage() {
       });
   }, [article_id]);
 
-  const {
-    article_img_url,
-    author,
-    body,
-    comment_count,
-    created_at,
-    title,
-    topic,
-    votes,
-  } = article;
-
-  const date = String(timestampToDate(created_at));
-
   return (
     <>
       {isLoading ? (
@@ -44,18 +30,7 @@ function ArticlePage() {
         </p>
       ) : (
         <>
-          <h1 className="article-title">{article.title}</h1>
-          <img
-            className="article-image"
-            src={article_img_url}
-            alt={`Banner image for ${title}`}
-          />
-          <h2 className="article-author">{author}</h2>
-          <div className="article-date">{date}</div>
-          <div className="article-body">{body}</div>
-          <div className="article-topic">{topic}</div>
-          <div className="article-votes">{votes} votes</div>
-          <div className="article-comment-count">{comment_count} comments</div>
+          <ArticleContent {...article} />
           <CommentsList article_id={article_id} />
         </>
       )}

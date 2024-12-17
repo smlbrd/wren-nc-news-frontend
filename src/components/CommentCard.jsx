@@ -7,9 +7,12 @@ function CommentCard({ author, body, created_at, votes }) {
   return (
     <li className="comment-card">
       <div className="comment-author">{author}</div>
-      <div>{votes}</div>
-      <div>{date}</div>
-      <div>{body}</div>
+      <div className="comment-info">
+        <div>
+          {votes} votes - {date}
+        </div>
+      </div>
+      <div className="comment-body">{body}</div>
     </li>
   );
 }
