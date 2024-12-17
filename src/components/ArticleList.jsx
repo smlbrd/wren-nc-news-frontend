@@ -1,3 +1,4 @@
+import '../styles/ArticleList.css';
 import { useState, useEffect } from 'react';
 import ArticleCard from '../components/ArticleCard';
 import { getAllArticles } from '../api/api';

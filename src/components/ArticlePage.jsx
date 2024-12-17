@@ -1,3 +1,4 @@
+import '../styles/ArticlePage.css';
 import timestampToDate from '../utils/timestampToDate';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
