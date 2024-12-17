@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getArticleById } from '../api/api';
 import CommentsList from './CommentsList';
 import ArticleContent from './ArticleContent';
+import CommentForm from './CommentForm';
 
 function ArticlePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +32,7 @@ function ArticlePage() {
       ) : (
         <>
           <ArticleContent {...article} />
+          <CommentForm article_id={article_id} />
           <CommentsList article_id={article_id} />
         </>
       )}

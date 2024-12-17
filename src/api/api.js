@@ -22,6 +22,12 @@ const getCommentsByArticleId = (articleId) => {
   });
 };
 
+const postCommentByArticleId = (articleId, newComment) => {
+  return api.post(`/articles/${articleId}/comments`, newComment).then((res) => {
+    console.log(res);
+  });
+};
+
 const patchVotesByArticleId = (articleId, requestBody) => {
   return api.patch(`/articles/${articleId}`, requestBody);
 };
@@ -30,5 +36,6 @@ export {
   getAllArticles,
   getArticleById,
   getCommentsByArticleId,
+  postCommentByArticleId,
   patchVotesByArticleId,
 };
