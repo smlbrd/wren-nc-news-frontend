@@ -7,12 +7,11 @@ function ArticleCard({
   created_at,
   title,
   topic,
-  cardId,
 }) {
   const date = String(timestampToDate(created_at));
 
   return (
-    <li id="card" className={`div${cardId + 1}`}>
+    <li className="article-card">
       <Link to={`/articles/${article_id}`}>
         {/* TODO: Add better alt text on the API side */}
         <img src={article_img_url} alt={`Banner image for ${title}`} />

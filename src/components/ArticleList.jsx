@@ -21,23 +21,15 @@ function ArticleList() {
 
   return (
     <>
-      <>
-        {isLoading ? (
-          <p className="loading">Starting to spread the news...</p>
-        ) : (
-          <ul className="card-container">
-            {articleList.map((article, index) => {
-              return (
-                <ArticleCard
-                  key={article.article_id}
-                  cardId={index}
-                  {...article}
-                />
-              );
-            })}
-          </ul>
-        )}
-      </>
+      {isLoading ? (
+        <p className="loading">Starting to spread the news...</p>
+      ) : (
+        <ul className="article-list">
+          {articleList.map((article) => {
+            return <ArticleCard key={article.article_id} {...article} />;
+          })}
+        </ul>
+      )}
     </>
   );
 }

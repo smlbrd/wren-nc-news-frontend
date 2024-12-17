@@ -3,6 +3,7 @@ import timestampToDate from '../utils/timestampToDate';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById } from '../api/api';
+import CommentsList from './CommentsList';
 
 function ArticlePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,31 +37,28 @@ function ArticlePage() {
 
   return (
     <>
-      <>
-        {isLoading ? (
-          <p className="loading">
-            Watching thousands of pages zoom past like the newspaper machines in
-            the movies...
-          </p>
-        ) : (
-          <>
-            <h1 className="article-title">{article.title}</h1>
-            <img
-              className="article-image"
-              src={article_img_url}
-              alt={`Banner image for ${title}`}
-            />
-            <h2 className="article-author">{author}</h2>
-            <div className="article-date">{date}</div>
-            <div className="article-body">{body}</div>
-            <div className="article-topic">{topic}</div>
-            <div className="article-votes">{votes} votes</div>
-            <div className="article-comment-count">
-              {comment_count} comments
-            </div>
-          </>
-        )}
-      </>
+      {isLoading ? (
+        <p className="loading">
+          Watching thousands of pages zoom past like the newspaper machines in
+          the movies...
+        </p>
+      ) : (
+        <>
+          <h1 className="article-title">{article.title}</h1>
+          <img
+            className="article-image"
+            src={article_img_url}
+            alt={`Banner image for ${title}`}
+          />
+          <h2 className="article-author">{author}</h2>
+          <div className="article-date">{date}</div>
+          <div className="article-body">{body}</div>
+          <div className="article-topic">{topic}</div>
+          <div className="article-votes">{votes} votes</div>
+          <div className="article-comment-count">{comment_count} comments</div>
+          <CommentsList article_id={article_id} />
+        </>
+      )}
     </>
   );
 }

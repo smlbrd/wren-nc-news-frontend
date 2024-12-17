@@ -7,7 +7,6 @@ function Footer() {
       <nav>
         <Link to={`/articles`}>Home</Link>
       </nav>
-      <div>Crocs, socks or flippy-flops? What do you want on your footer?</div>
     </footer>
   );
 }
