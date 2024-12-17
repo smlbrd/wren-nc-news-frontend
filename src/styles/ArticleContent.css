@@ -30,6 +30,15 @@
   margin: 1rem;
 }
 
+.article-votes button {
+  width: 50px;
+  height: 20px;
+  margin: 0.5rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
 .article-comment-count {
   margin: 1rem;
 }

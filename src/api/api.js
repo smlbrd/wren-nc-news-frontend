@@ -22,4 +22,23 @@ const getCommentsByArticleId = (articleId) => {
   });
 };
 
-export { getAllArticles, getArticleById, getCommentsByArticleId };
+const patchVotesByArticleId = (articleId, requestBody) => {
+  return api.patch(`/articles/${articleId}`, requestBody).then(
+    /* I left this in just in case you wanted to 
+    see how optimistic my rendering is... <3 */
+    ({
+      data: {
+        article: { votes },
+      },
+    }) => {
+      console.log(votes, 'updated vote total from api');
+    }
+  );
+};
+
+export {
+  getAllArticles,
+  getArticleById,
+  getCommentsByArticleId,
+  patchVotesByArticleId,
+};
