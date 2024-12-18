@@ -10,7 +10,7 @@ const getAllTopics = () => {
   });
 };
 
-const getAllArticles = () => {
+const getAllArticles = (topic) => {
   return api.get('/articles', { params: { topic: topic } }).then(({ data }) => {
     return data;
   });
@@ -47,7 +47,6 @@ const patchVotesByArticleId = (articleId, requestBody) => {
 export {
   getAllTopics,
   getAllArticles,
-  getArticlesByTopic,
   getArticleById,
   getCommentsByArticleId,
   postCommentByArticleId,

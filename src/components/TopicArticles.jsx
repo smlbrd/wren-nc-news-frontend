@@ -13,12 +13,10 @@ function TopicArticles() {
     setIsLoading(true);
     getAllArticles(topic)
       .then((data) => {
-        console.log(data);
         setArticleList(data.articles);
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
         setError('Something went wrong!');
         setIsLoading(false);
       });
@@ -28,13 +26,14 @@ function TopicArticles() {
     <>
       {isLoading ? <p>Thinking...</p> : null}
       {error ? <p>{error}</p> : null}
-      <ul>
+      <ul className="article-list">
         {articleList.map((article) => {
           return (
-            <>
-              <p>Here is an article...</p>
-              <ArticleCard key={article.article_id} {...article} />
-            </>
+            <ArticleCard
+              className="article-card"
+              key={article.article_id}
+              {...article}
+            />
           );
         })}
       </ul>
