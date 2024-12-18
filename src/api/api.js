@@ -30,6 +30,10 @@ const postCommentByArticleId = (articleId, newComment) => {
     });
 };
 
+const deleteCommentById = (commentId) => {
+  return api.delete(`/comments/${commentId}`);
+};
+
 const patchVotesByArticleId = (articleId, requestBody) => {
   return api.patch(`/articles/${articleId}`, requestBody);
 };
@@ -39,5 +43,6 @@ export {
   getArticleById,
   getCommentsByArticleId,
   postCommentByArticleId,
+  deleteCommentById,
   patchVotesByArticleId,
 };
