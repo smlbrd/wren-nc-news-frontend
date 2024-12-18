@@ -1,15 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { postCommentByArticleId } from '../api/api';
 import { UserContext } from '../contexts/UserContext';
 
-function CommentForm({ article_id }) {
+function CommentForm({ article_id, setCommentsList }) {
   const { user } = useContext(UserContext);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
   const [newComment, setNewComment] = useState('');
-
-  console.log(user.name);
-  console.log(newComment);
 
   function handleChange(e) {
     setNewComment(e.target.value);
@@ -24,9 +21,13 @@ function CommentForm({ article_id }) {
       username: user.name,
       body: newComment,
     })
-      .then((response) => {
-        console.log(response);
+      .then((newlyPostedComment) => {
+        setCommentsList((currComments) => [
+          newlyPostedComment,
+          ...currComments,
+        ]);
         setPending(false);
+        setNewComment('');
       })
       .catch(() => {
         setError('Something went wrong. Please try again later!');
@@ -39,6 +40,7 @@ function CommentForm({ article_id }) {
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <textarea
+          name="comment"
           type="text"
           placeholder="Join the conversation"
           value={newComment}

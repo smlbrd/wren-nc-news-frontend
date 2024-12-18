@@ -23,9 +23,11 @@ const getCommentsByArticleId = (articleId) => {
 };
 
 const postCommentByArticleId = (articleId, newComment) => {
-  return api.post(`/articles/${articleId}/comments`, newComment).then((res) => {
-    console.log(res);
-  });
+  return api
+    .post(`/articles/${articleId}/comments`, newComment)
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
 };
 
 const patchVotesByArticleId = (articleId, requestBody) => {
