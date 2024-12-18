@@ -10,11 +10,13 @@ function ArticleList() {
   const [articleList, setArticleList] = useState([]);
   const { topic } = useParams();
 
-  console.log(topic);
+  const author = null;
+  const sort_by = null;
+  const order = null;
 
   useEffect(() => {
     setIsLoading(true);
-    getAllArticles(topic)
+    getAllArticles(author, topic, sort_by, order)
       .then(({ articles }) => {
         setArticleList(articles);
         setIsLoading(false);
