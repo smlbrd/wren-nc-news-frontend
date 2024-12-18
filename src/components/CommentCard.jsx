@@ -14,8 +14,8 @@ function CommentCard({
   const { user } = useContext(UserContext);
   const date = timestampFromNow(created_at);
 
-  function handleDelete() {
-    if (window.alert('Are you sure?')) {
+  function handleDelete(comment_id) {
+    if (window.confirm('Are you sure?')) {
       deleteComment(comment_id);
     }
   }
@@ -33,7 +33,10 @@ function CommentCard({
         {comment_id}
       </div>
       {author === user.name && (
-        <button className="comment-delete" onClick={handleDelete}>
+        <button
+          className="comment-delete"
+          onClick={() => handleDelete(comment_id)}
+        >
           Delete
         </button>
       )}

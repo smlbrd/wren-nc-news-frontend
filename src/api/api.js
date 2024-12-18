@@ -31,7 +31,7 @@ const postCommentByArticleId = (articleId, newComment) => {
 };
 
 const deleteCommentById = (commentId) => {
-  return api.post(`/comments/${commentId}`);
+  return api.delete(`/comments/${commentId}`);
 };
 
 const patchVotesByArticleId = (articleId, requestBody) => {

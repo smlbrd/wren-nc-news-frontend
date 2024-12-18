@@ -20,13 +20,12 @@ function CommentsList({ article_id }) {
       });
   }, [article_id]);
 
-  function deleteComment(soonToBeDeletedCommentId) {
-    deleteCommentById(soonToBeDeletedCommentId)
+  function deleteComment(commentIdToDelete) {
+    deleteCommentById(commentIdToDelete)
       .then(() => {
-        console.log('delet');
         setCommentsList((currComments) =>
           currComments.filter(
-            (comment) => comment.comment_id !== soonToBeDeletedCommentId
+            (comment) => comment.comment_id !== commentIdToDelete
           )
         );
       })
