@@ -13,33 +13,21 @@ function VoteHandler({ article_id, votes }) {
   }
 
   function handleClick() {
-    if (!isClicked) {
-      setError(null);
-      patchVotesByArticleId(article_id, { inc_votes: 1 }).catch(() => {
-        setError('Something went wrong. Please try again later!');
+    const voteAdjustment = !isClicked ? 1 : -1;
+    setError(null);
+    patchVotesByArticleId(article_id, { inc_votes: voteAdjustment }).catch(
+      () => {
+        setError('Something went wrong. Please try again!');
         setVoteAdded((currentVotesAdded) => {
           return currentVotesAdded - 1;
         });
-      });
-      setVoteAdded((currentVotesAdded) => {
-        setIsClicked(!isClicked);
-        return currentVotesAdded + 1;
-      });
-    } else {
-      patchVotesByArticleId(article_id, { inc_votes: -1 }).catch(() => {
-        setError('Something went wrong. Please try again later!');
-        setVoteAdded((currentVotesAdded) => {
-          return currentVotesAdded - 1;
-        });
-      });
-      setVoteAdded((currentVotesAdded) => {
-        setIsClicked(!isClicked);
-        return currentVotesAdded + 1;
-      });
-    }
+      }
+    );
+    setVoteAdded((currentVotesAdded) => {
+      setIsClicked(!isClicked);
+      return currentVotesAdded + 1;
+    });
   }
-
-  if (error) return <p>{error}</p>;
 
   return (
     <>
@@ -55,6 +43,7 @@ function VoteHandler({ article_id, votes }) {
             <p>{votes} likes</p>
           </>
         )}
+        {error && <p>{error}</p>}
       </div>
     </>
   );

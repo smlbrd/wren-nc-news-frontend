@@ -1,7 +1,7 @@
 import '../styles/CommentCard.css';
 import timestampFromNow from '../utils/timestampFromNow';
 
-function CommentCard({ author, body, created_at, votes }) {
+function CommentCard({ author, body, comment_id, created_at, votes }) {
   const date = timestampFromNow(created_at);
 
   return (
@@ -13,6 +13,9 @@ function CommentCard({ author, body, created_at, votes }) {
         </div>
       </div>
       <div className="comment-body">{body}</div>
+      <div className="comment-id" hidden>
+        {comment_id}
+      </div>
     </li>
   );
 }
