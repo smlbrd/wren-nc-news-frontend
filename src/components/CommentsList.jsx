@@ -20,6 +20,21 @@ function CommentsList({ article_id }) {
       });
   }, [article_id]);
 
+  function deleteComment(soonToBeDeletedCommentId) {
+    deleteCommentById(soonToBeDeletedCommentId)
+      .then(() => {
+        console.log('delet');
+        setCommentsList((currComments) =>
+          currComments.filter(
+            (comment) => comment.comment_id !== soonToBeDeletedCommentId
+          )
+        );
+      })
+      .catch((error) => {
+        console.log(error, 'ruh roh!');
+      });
+  }
+
   return (
     <>
       {isLoading ? (
@@ -36,7 +51,7 @@ function CommentsList({ article_id }) {
                 <CommentCard
                   key={comment.comment_id}
                   {...comment}
-                  // deleteComment={deleteComment}
+                  deleteComment={deleteComment}
                 />
               );
             })}

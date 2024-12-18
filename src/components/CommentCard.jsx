@@ -9,16 +9,16 @@ function CommentCard({
   comment_id,
   created_at,
   votes,
-  // deleteComment,
+  deleteComment,
 }) {
   const { user } = useContext(UserContext);
   const date = timestampFromNow(created_at);
 
-  // function handleDelete() {
-  //   if (window.alert('Are you sure?')) {
-  //     deleteComment(comment_id);
-  //   }
-  // }
+  function handleDelete() {
+    if (window.alert('Are you sure?')) {
+      deleteComment(comment_id);
+    }
+  }
 
   return (
     <li className="comment-card">
@@ -32,11 +32,11 @@ function CommentCard({
       <div className="comment-id" hidden>
         {comment_id}
       </div>
-      {/* {author === user.name && (
+      {author === user.name && (
         <button className="comment-delete" onClick={handleDelete}>
           Delete
         </button>
-      )} */}
+      )}
     </li>
   );
 }
