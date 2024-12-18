@@ -12,6 +12,10 @@ function CommentForm({ article_id, setCommentsList }) {
     setNewComment(e.target.value);
   }
 
+  function handleReset() {
+    setNewComment('');
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     setError(false);
@@ -47,7 +51,10 @@ function CommentForm({ article_id, setCommentsList }) {
           onChange={handleChange}
           required
         />
-        <button type="submit" disabled={pending}>
+        <button type="reset" value="reset" onClick={handleReset}>
+          Reset
+        </button>
+        <button type="submit" value="submit" disabled={pending}>
           {pending ? 'Submitting...' : 'Submit'}
         </button>
       </form>

@@ -16,7 +16,7 @@ function TopicArticles() {
         setArticleList(data.articles);
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         setError('Something went wrong!');
         setIsLoading(false);
       });

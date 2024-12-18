@@ -15,8 +15,8 @@ function ArticleList() {
         setArticleList(articles);
         setIsLoading(false);
       })
-      .catch((error) => {
-        setError('Something went wrong:', error);
+      .catch(() => {
+        setError('Something went wrong');
       });
   }, []);
 
