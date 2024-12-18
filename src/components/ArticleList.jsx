@@ -5,6 +5,7 @@ import { getAllArticles } from '../api/api';
 
 function ArticleList() {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [articleList, setArticleList] = useState([]);
 
   useEffect(() => {
@@ -15,12 +16,13 @@ function ArticleList() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error, 'Something went wrong!');
+        setError('Something went wrong:', error);
       });
   }, []);
 
   return (
     <>
+      {error ? <p>error</p> : null}
       {isLoading ? (
         <p className="loading">Starting to spread the news...</p>
       ) : (

@@ -10,10 +10,18 @@ const getAllTopics = () => {
   });
 };
 
-const getAllArticles = () => {
-  return api.get('/articles').then(({ data }) => {
-    return data;
-  });
+const getAllArticles = (topic) => {
+  console.log(topic, 'fetch param');
+  return api
+    .get('/articles', {
+      params: {
+        topic: topic,
+      },
+    })
+    .then(({ data }) => {
+      console.log(data, 'api response');
+      return data;
+    });
 };
 
 const getArticleById = (articleId) => {
