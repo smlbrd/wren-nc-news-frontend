@@ -1,5 +1,5 @@
 import timestampToDate from '../utils/timestampToDate';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 function ArticleCard({
   article_id,

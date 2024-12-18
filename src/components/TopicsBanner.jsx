@@ -1,7 +1,7 @@
 import '../styles/TopicsBanner.css';
 import { useState, useEffect } from 'react';
 import { getAllTopics } from '../api/api';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 function TopicsBanner() {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +15,7 @@ function TopicsBanner() {
         setTopicList(topics);
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         setError('Something went wrong!');
       });
   }, []);
@@ -27,6 +27,9 @@ function TopicsBanner() {
         <p className="loading">Contemplating categories...</p>
       ) : (
         <ul className="topic-banner">
+          <li className="topic-item" key="home">
+            <Link to={`articles`}>latest</Link>
+          </li>
           {topicList.map((topic) => {
             return (
               <li className="topic-item" key={topic.slug}>

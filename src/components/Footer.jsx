@@ -1,11 +1,11 @@
 import '../styles/Footer.css';
-import { Link } from 'react-router-dom';
+import TopicsBanner from './TopicsBanner';
 
 function Footer() {
   return (
     <footer className="footer">
       <nav>
-        <Link to={`/articles`}>Home</Link>
+        <TopicsBanner />
       </nav>
     </footer>
   );
