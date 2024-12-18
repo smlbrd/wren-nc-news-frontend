@@ -10,8 +10,8 @@ const getAllTopics = () => {
   });
 };
 
-const getAllArticles = () => {
-  return api.get('/articles').then(({ data }) => {
+const getAllArticles = (topic) => {
+  return api.get('/articles', { params: { topic: topic } }).then(({ data }) => {
     return data;
   });
 };
