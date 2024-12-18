@@ -14,7 +14,6 @@ function App() {
       <Routes>
         <Route path="/articles" element={<ArticleList />} />
         <Route path="/articles/:article_id" element={<ArticlePage />} />
-        <Route path="/articles/topics/:topic" element={<ArticleList />} />
         <Route path="*" element={<Navigate to="/articles" />} />
       </Routes>
       <Footer />

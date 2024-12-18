@@ -1,6 +1,6 @@
 import '../styles/ArticleList.css';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useLocation, useParams, useSearchParams } from 'react-router';
 import ArticleCard from '../components/ArticleCard';
 import { getAllArticles } from '../api/api';
 
@@ -8,7 +8,9 @@ function ArticleList() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [articleList, setArticleList] = useState([]);
-  const { topic } = useParams();
+
+  const location = useLocation();
+  const topic = new URLSearchParams(location.search).get('topic');
 
   const author = null;
   const sort_by = null;

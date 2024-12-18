@@ -33,7 +33,11 @@ function TopicsBanner() {
           {topicList.map((topic) => {
             return (
               <li className="topic-item" key={topic.slug}>
-                <Link to={`articles/topics/${topic.slug}`}>{topic.slug}</Link>
+                <Link
+                  to={{ pathname: `articles`, search: `?topic=${topic.slug}` }}
+                >
+                  {topic.slug}
+                </Link>
               </li>
             );
           })}
