@@ -15,7 +15,7 @@ function ArticleList() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error, 'ruh roh!');
+        console.log(error, 'Something went wrong!');
       });
   }, []);
 

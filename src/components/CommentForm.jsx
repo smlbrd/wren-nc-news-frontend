@@ -37,7 +37,7 @@ function CommentForm({ article_id, setCommentsList }) {
 
   return (
     <div>
-      {error && <p>{error}</p>}
+      {error ? <p>{error}</p> : null}
       <form onSubmit={handleSubmit}>
         <textarea
           name="comment"

@@ -4,6 +4,12 @@ const api = axios.create({
   baseURL: 'https://wren-nc-news.onrender.com/api',
 });
 
+const getAllTopics = () => {
+  return api.get('/topics').then(({ data }) => {
+    return data;
+  });
+};
+
 const getAllArticles = () => {
   return api.get('/articles').then(({ data }) => {
     return data;
@@ -39,6 +45,7 @@ const patchVotesByArticleId = (articleId, requestBody) => {
 };
 
 export {
+  getAllTopics,
   getAllArticles,
   getArticleById,
   getCommentsByArticleId,
