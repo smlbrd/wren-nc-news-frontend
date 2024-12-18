@@ -2,6 +2,7 @@ import { getCommentsByArticleId } from '../api/api';
 import { useEffect, useState } from 'react';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
+import { deleteCommentById } from '../api/api';
 
 function CommentsList({ article_id }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +32,13 @@ function CommentsList({ article_id }) {
           />
           <ul className="comments-list">
             {commentsList.map((comment) => {
-              return <CommentCard key={comment.comment_id} {...comment} />;
+              return (
+                <CommentCard
+                  key={comment.comment_id}
+                  {...comment}
+                  // deleteComment={deleteComment}
+                />
+              );
             })}
           </ul>
         </>
