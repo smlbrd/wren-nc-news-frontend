@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getAllArticles } from '../api/api';
 import ArticleCard from './ArticleCard';
 
@@ -7,10 +7,7 @@ function TopicArticles() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [articleList, setArticleList] = useState([]);
-  const [searchParams] = useSearchParams();
-
-  const topic = searchParams.get('topic');
-  console.log(searchParams);
+  const { topic } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,7 +18,8 @@ function TopicArticles() {
         setIsLoading(false);
       })
       .catch((error) => {
-        setError('Something went wrong:', error);
+        console.log(error);
+        setError('Something went wrong!');
         setIsLoading(false);
       });
   }, [topic]);
@@ -29,12 +27,12 @@ function TopicArticles() {
   return (
     <>
       {isLoading ? <p>Thinking...</p> : null}
-      {error ? <p>error</p> : null}
+      {error ? <p>{error}</p> : null}
       <ul>
         {articleList.map((article) => {
           return (
             <>
-              <p>It works!</p>
+              <p>Here is an article...</p>
               <ArticleCard key={article.article_id} {...article} />
             </>
           );

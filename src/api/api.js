@@ -10,18 +10,10 @@ const getAllTopics = () => {
   });
 };
 
-const getAllArticles = (topic) => {
-  console.log(topic, 'fetch param');
-  return api
-    .get('/articles', {
-      params: {
-        topic: topic,
-      },
-    })
-    .then(({ data }) => {
-      console.log(data, 'api response');
-      return data;
-    });
+const getAllArticles = () => {
+  return api.get('/articles', { params: { topic: topic } }).then(({ data }) => {
+    return data;
+  });
 };
 
 const getArticleById = (articleId) => {
@@ -55,6 +47,7 @@ const patchVotesByArticleId = (articleId, requestBody) => {
 export {
   getAllTopics,
   getAllArticles,
+  getArticlesByTopic,
   getArticleById,
   getCommentsByArticleId,
   postCommentByArticleId,

@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/articles" element={<ArticleList />} />
         <Route path="/articles/:article_id" element={<ArticlePage />} />
-        <Route path="/articles" element={<TopicArticles />} />
+        <Route path="/articles/topics/:topic" element={<TopicArticles />} />
         <Route path="*" element={<Navigate to="/articles" />} />
       </Routes>
       <Footer />
