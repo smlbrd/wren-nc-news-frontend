@@ -44,6 +44,7 @@ function CommentForm({ article_id, setCommentsList }) {
       {error ? <p>{error}</p> : null}
       <form onSubmit={handleSubmit}>
         <textarea
+          className="comment-input"
           name="comment"
           type="text"
           placeholder="Join the conversation"
@@ -51,10 +52,20 @@ function CommentForm({ article_id, setCommentsList }) {
           onChange={handleChange}
           required
         />
-        <button type="reset" value="reset" onClick={handleReset}>
+        <button
+          className="comment-button"
+          type="reset"
+          value="reset"
+          onClick={handleReset}
+        >
           Reset
         </button>
-        <button type="submit" value="submit" disabled={pending}>
+        <button
+          className="comment-button"
+          type="submit"
+          value="submit"
+          disabled={pending}
+        >
           {pending ? 'Submitting...' : 'Submit'}
         </button>
       </form>

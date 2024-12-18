@@ -3,6 +3,7 @@
   position: relative;
   margin: 20px auto;
 }
+
 .comment-author {
   color: rgba(0, 0, 0, 0.85);
   font-weight: bold;
@@ -15,4 +16,15 @@
 
 .comment-body {
   padding: 20px 0;
+}
+
+.comment-input {
+  display: flex;
+  padding: 20px;
+}
+
+.comment-button {
+  margin: 12px;
+  padding: 6px;
+  border-radius: 6px;
 }

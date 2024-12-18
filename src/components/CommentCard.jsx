@@ -35,7 +35,7 @@ function CommentCard({
       </div>
       {author === user.name && (
         <button
-          className="comment-delete"
+          className="comment-button"
           onClick={() => handleDelete(comment_id)}
           disabled={isDeleting}
         >
