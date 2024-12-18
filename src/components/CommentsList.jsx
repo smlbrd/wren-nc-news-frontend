@@ -1,6 +1,7 @@
 import { getCommentsByArticleId } from '../api/api';
 import { useEffect, useState } from 'react';
 import CommentCard from './CommentCard';
+import CommentForm from './CommentForm';
 
 function CommentsList({ article_id }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,11 +24,17 @@ function CommentsList({ article_id }) {
       {isLoading ? (
         <p>Listening to the people...</p>
       ) : (
-        <ul className="comments-list">
-          {commentsList.map((comment) => {
-            return <CommentCard key={comment.comment_id} {...comment} />;
-          })}
-        </ul>
+        <>
+          <CommentForm
+            article_id={article_id}
+            setCommentsList={setCommentsList}
+          />
+          <ul className="comments-list">
+            {commentsList.map((comment) => {
+              return <CommentCard key={comment.comment_id} {...comment} />;
+            })}
+          </ul>
+        </>
       )}
     </>
   );
