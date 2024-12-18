@@ -10,6 +10,7 @@ function CommentCard({
   created_at,
   votes,
   deleteComment,
+  isDeleting,
 }) {
   const { user } = useContext(UserContext);
   const date = timestampFromNow(created_at);
@@ -36,8 +37,9 @@ function CommentCard({
         <button
           className="comment-delete"
           onClick={() => handleDelete(comment_id)}
+          disabled={isDeleting}
         >
-          Delete
+          {isDeleting ? 'Deleting...' : 'Delete'}
         </button>
       )}
     </li>

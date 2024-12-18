@@ -6,6 +6,7 @@ import { deleteCommentById } from '../api/api';
 
 function CommentsList({ article_id }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [commentsList, setCommentsList] = useState([]);
 
   useEffect(() => {
@@ -16,11 +17,12 @@ function CommentsList({ article_id }) {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error, 'ruh roh!');
+        console.log(error, 'Something went wrong!');
       });
   }, [article_id]);
 
   function deleteComment(commentIdToDelete) {
+    setIsDeleting(true);
     deleteCommentById(commentIdToDelete)
       .then(() => {
         setCommentsList((currComments) =>
@@ -28,9 +30,11 @@ function CommentsList({ article_id }) {
             (comment) => comment.comment_id !== commentIdToDelete
           )
         );
+        setIsDeleting(false);
       })
       .catch((error) => {
-        console.log(error, 'ruh roh!');
+        console.log(error, 'Something went wrong!');
+        setIsDeleting(false);
       });
   }
 
@@ -51,6 +55,7 @@ function CommentsList({ article_id }) {
                   key={comment.comment_id}
                   {...comment}
                   deleteComment={deleteComment}
+                  isDeleting={isDeleting}
                 />
               );
             })}
