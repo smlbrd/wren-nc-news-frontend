@@ -1,3 +1,4 @@
+import '../styles/SortBanner.css';
 import { useSearchParams } from 'react-router';
 
 function SortBanner({ sortBy, order }) {
@@ -35,12 +36,22 @@ function SortBanner({ sortBy, order }) {
 
   return (
     <div className="sort-banner">
-      <select id="sort-select" value={sortBy} onChange={handleSortByChange}>
+      <select
+        className="sort-dropdown"
+        id="sort-select"
+        value={sortBy}
+        onChange={handleSortByChange}
+      >
         <option value="created_at">Published</option>
         <option value="comment_count">Comments</option>
         <option value="votes">Votes</option>
       </select>
-      <select id="order-select" value={order} onChange={handleOrderChange}>
+      <select
+        className="sort-dropdown"
+        id="order-select"
+        value={order}
+        onChange={handleOrderChange}
+      >
         <option value="DESC">Descending</option>
         <option value="ASC">Ascending</option>
       </select>
