@@ -4,7 +4,6 @@ import ErrorHandler from './ErrorHandler';
 
 function VoteHandler({ article_id, votes }) {
   const [isClicked, setIsClicked] = useState(false);
-  const [voteAdded, setVoteAdded] = useState(0);
   const [error, setError] = useState(null);
 
   function handleClick() {
@@ -13,15 +12,9 @@ function VoteHandler({ article_id, votes }) {
     patchVotesByArticleId(article_id, { inc_votes: voteAdjustment }).catch(
       () => {
         setError(error);
-        setVoteAdded((currentVotesAdded) => {
-          return currentVotesAdded - 1;
-        });
       }
     );
-    setVoteAdded((currentVotesAdded) => {
-      setIsClicked(!isClicked);
-      return currentVotesAdded + 1;
-    });
+    setIsClicked(!isClicked);
   }
 
   return (
