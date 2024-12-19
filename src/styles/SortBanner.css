@@ -1,0 +1,10 @@
+.sort-banner {
+  display: flex;
+  margin: 0 40px;
+  justify-content: flex-start;
+  align-items: start;
+}
+
+.sort-dropdown {
+  margin: 0.5rem;
+}

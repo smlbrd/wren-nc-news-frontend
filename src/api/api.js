@@ -10,10 +10,14 @@ const getAllTopics = () => {
   });
 };
 
-const getAllArticles = (topic) => {
-  return api.get('/articles', { params: { topic: topic } }).then(({ data }) => {
-    return data;
-  });
+const getAllArticles = (topic, sort_by, order) => {
+  return api
+    .get('/articles', {
+      params: { topic, sort_by, order },
+    })
+    .then(({ data }) => {
+      return data;
+    });
 };
 
 const getArticleById = (articleId) => {

@@ -1,7 +1,8 @@
 .topic-banner {
   display: flex;
-  justify-content: flex-start;
   margin: 0;
+  justify-content: flex-start;
+  align-items: start;
   list-style-type: none;
 }
 

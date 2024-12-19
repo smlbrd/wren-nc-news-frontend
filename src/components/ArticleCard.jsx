@@ -1,5 +1,6 @@
 import timestampToDate from '../utils/timestampToDate';
-import { Link } from 'react-router-dom';
+import timestampFromNow from '../utils/timestampFromNow';
+import { Link } from 'react-router';
 
 function ArticleCard({
   article_id,
@@ -7,8 +8,11 @@ function ArticleCard({
   created_at,
   title,
   topic,
+  comment_count,
+  votes,
 }) {
-  const date = String(timestampToDate(created_at));
+  const published = String(timestampToDate(created_at));
+  const timeAgo = String(timestampFromNow(created_at));
 
   return (
     <li className="article-card">
@@ -17,9 +21,13 @@ function ArticleCard({
         <img src={article_img_url} alt={`Banner image for ${title}`} />
         <h2>{title}</h2>
       </Link>
-      <div>{date}</div>
+      <div>
+        {published} ({timeAgo})
+      </div>
       {/* TODO: Replace with react-router Links to Topic views */}
       <div>{topic}</div>
+      <div>{comment_count} comments</div>
+      <div>{votes} votes</div>
     </li>
   );
 }
