@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getAllTopics } from '../api/api';
 import { Link } from 'react-router';
 import ErrorHandler from './ErrorHandler';
+import Loading from './Loading';
 
 function TopicsBanner({ handleTopicChange }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +27,7 @@ function TopicsBanner({ handleTopicChange }) {
     <>
       {error ? <ErrorHandler error={error} /> : null}
       {isLoading ? (
-        <p className="loading">Contemplating categories...</p>
+        <Loading />
       ) : (
         <ul className="topic-banner">
           <li className="topic-item" key="home">

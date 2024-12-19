@@ -48,7 +48,7 @@ function SortBanner() {
         onChange={handleOrderChange}
       >
         <option value="orders" disabled>
-          Order By
+          Order by
         </option>
         <option value="DESC">Descending</option>
         <option value="ASC">Ascending</option>

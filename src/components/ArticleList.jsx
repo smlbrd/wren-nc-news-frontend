@@ -6,6 +6,8 @@ import { getAllArticles } from '../api/api';
 import SortBanner from './SortBanner';
 import { useSearchParams } from 'react-router';
 import ErrorHandler from './ErrorHandler';
+import PageButtons from './PageButtons';
+import Loading from './Loading';
 
 function ArticleList() {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,11 +18,13 @@ function ArticleList() {
   const topic = searchParams.get('topic') || '';
   const sortBy = searchParams.get('sort_by') || 'created_at';
   const order = searchParams.get('order') || 'DESC';
+  const [limit, setLimit] = useState(10);
+  const [p, setP] = useState(1);
 
   useEffect(() => {
     setError(null);
     setIsLoading(true);
-    getAllArticles(topic, sortBy, order)
+    getAllArticles(topic, sortBy, order, limit, p)
       .then(({ articles }) => {
         setArticleList(articles);
         setIsLoading(false);
@@ -29,7 +33,7 @@ function ArticleList() {
         setError(error);
         setIsLoading(false);
       });
-  }, [topic, sortBy, order]);
+  }, [topic, sortBy, order, limit, p]);
 
   function handleTopicChange(newTopic) {
     setSearchParams((prevParams) => {
@@ -45,9 +49,8 @@ function ArticleList() {
         <TopicsBanner handleTopicChange={handleTopicChange} />
         <SortBanner />
         {error ? <ErrorHandler error={error} /> : null}
-        {isLoading ? (
-          <p className="loading">Starting to spread the news...</p>
-        ) : null}
+        {isLoading ? <Loading /> : null}
+        <PageButtons />
         <ul id="main" className="article-list">
           {articleList.map((article) => {
             return (
@@ -59,6 +62,7 @@ function ArticleList() {
             );
           })}
         </ul>
+        <PageButtons />
       </>
     </>
   );
