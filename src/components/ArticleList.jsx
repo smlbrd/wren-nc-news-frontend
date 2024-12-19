@@ -50,7 +50,7 @@ function ArticleList() {
         <SortBanner />
         {error ? <ErrorHandler error={error} /> : null}
         {isLoading ? <Loading /> : null}
-        <PageButtons />
+        <PageButtons p={p} setP={setP} />
         <ul id="main" className="article-list">
           {articleList.map((article) => {
             return (
@@ -62,7 +62,6 @@ function ArticleList() {
             );
           })}
         </ul>
-        <PageButtons />
       </>
     </>
   );
