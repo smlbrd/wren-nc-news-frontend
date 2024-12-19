@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import '../styles/ArticleContent.css';
 import timestampToDate from '../utils/timestampToDate';
 import VoteHandler from './VoteHandler';
+import timestampFromNow from '../utils/timestampFromNow';
 
 function ArticleContent({
   article_id,
@@ -14,7 +15,8 @@ function ArticleContent({
   topic,
   votes,
 }) {
-  const date = String(timestampToDate(created_at));
+  const published = String(timestampToDate(created_at));
+  const timeAgo = String(timestampFromNow(created_at));
 
   return (
     <div className="article-content">
@@ -25,7 +27,9 @@ function ArticleContent({
         alt={`Banner image for ${title}`}
       />
       <h2 className="article-author">{author}</h2>
-      <div className="article-date">{date}</div>
+      <div className="article-date">
+        {published} ({timeAgo})
+      </div>
       <div className="article-body">{body}</div>
       <Link to={`/articles?topic=${topic}`} className="article-topic">
         {topic}
