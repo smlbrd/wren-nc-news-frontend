@@ -3,13 +3,16 @@ import { useEffect, useState } from 'react';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
 import { deleteCommentById } from '../api/api';
+import ErrorHandler from './ErrorHandler';
 
 function CommentsList({ article_id }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [error, setError] = useState(null);
   const [commentsList, setCommentsList] = useState([]);
 
   useEffect(() => {
+    setError(null);
     setIsLoading(true);
     getCommentsByArticleId(article_id)
       .then(({ comments }) => {
@@ -17,7 +20,8 @@ function CommentsList({ article_id }) {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error, 'Something went wrong!');
+        setError(error);
+        setIsLoading(false);
       });
   }, [article_id]);
 
@@ -33,13 +37,14 @@ function CommentsList({ article_id }) {
         setIsDeleting(false);
       })
       .catch((error) => {
-        console.log(error, 'Something went wrong!');
+        setError(error);
         setIsDeleting(false);
       });
   }
 
   return (
     <>
+      {error ? <ErrorHandler error={error} /> : null}
       {isLoading ? (
         <p>Listening to the people...</p>
       ) : (

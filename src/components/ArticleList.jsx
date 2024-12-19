@@ -5,10 +5,11 @@ import TopicsBanner from './TopicsBanner';
 import { getAllArticles } from '../api/api';
 import SortBanner from './SortBanner';
 import { useSearchParams } from 'react-router';
+import ErrorHandler from './ErrorHandler';
 
 function ArticleList() {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const [articleList, setArticleList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -16,20 +17,16 @@ function ArticleList() {
   const sortBy = searchParams.get('sort_by') || 'created_at';
   const order = searchParams.get('order') || 'DESC';
 
-  console.log('topic:', topic);
-  console.log('sort:', sortBy);
-  console.log('order:', order);
-
   useEffect(() => {
+    setError(null);
     setIsLoading(true);
-    console.log(topic);
     getAllArticles(topic, sortBy, order)
       .then(({ articles }) => {
         setArticleList(articles);
         setIsLoading(false);
       })
-      .catch(() => {
-        setError('Something went wrong');
+      .catch((error) => {
+        setError(error);
         setIsLoading(false);
       });
   }, [topic, sortBy, order]);
@@ -44,26 +41,25 @@ function ArticleList() {
 
   return (
     <>
-      {error ? <p>{error}</p> : null}
-      {isLoading ? (
-        <p className="loading">Starting to spread the news...</p>
-      ) : (
-        <>
-          <TopicsBanner handleTopicChange={handleTopicChange} />
-          <SortBanner sortBy={sortBy} order={order} />
-          <ul className="article-list">
-            {articleList.map((article) => {
-              return (
-                <ArticleCard
-                  className="article-card"
-                  key={article.article_id}
-                  {...article}
-                />
-              );
-            })}
-          </ul>
-        </>
-      )}
+      <>
+        <TopicsBanner handleTopicChange={handleTopicChange} />
+        <SortBanner sortBy={sortBy} order={order} />
+        {error ? <ErrorHandler error={error} /> : null}
+        {isLoading ? (
+          <p className="loading">Starting to spread the news...</p>
+        ) : null}
+        <ul className="article-list">
+          {articleList.map((article) => {
+            return (
+              <ArticleCard
+                className="article-card"
+                key={article.article_id}
+                {...article}
+              />
+            );
+          })}
+        </ul>
+      </>
     </>
   );
 }
