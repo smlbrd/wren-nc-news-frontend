@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import { getAllTopics } from '../api/api';
 import { Link } from 'react-router';
 
-function TopicsBanner() {
+function TopicsBanner({ handleTopicChange }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [topicList, setTopicList] = useState([]);
 
   useEffect(() => {
+    setError('');
     setIsLoading(true);
     getAllTopics()
       .then(({ topics }) => {
@@ -28,13 +29,16 @@ function TopicsBanner() {
       ) : (
         <ul className="topic-banner">
           <li className="topic-item" key="home">
-            <Link to={`articles`}>latest</Link>
+            <Link to={`/`}>latest</Link>
           </li>
           {topicList.map((topic) => {
             return (
               <li className="topic-item" key={topic.slug}>
                 <Link
-                  to={{ pathname: `articles`, search: `?topic=${topic.slug}` }}
+                  to={`?topic=${topic.slug}`}
+                  onClick={() => {
+                    handleTopicChange(`${topic.slug}`);
+                  }}
                 >
                   {topic.slug}
                 </Link>

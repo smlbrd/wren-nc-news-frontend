@@ -10,10 +10,10 @@ const getAllTopics = () => {
   });
 };
 
-const getAllArticles = (author, topic, sort_by, order) => {
+const getAllArticles = (topic, sort_by, order) => {
   return api
     .get('/articles', {
-      params: { author, topic, sort_by, order },
+      params: { topic, sort_by, order },
     })
     .then(({ data }) => {
       return data;
