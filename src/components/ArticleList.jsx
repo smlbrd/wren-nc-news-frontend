@@ -36,7 +36,7 @@ function ArticleList() {
 
   return (
     <>
-      {error ? <p>error</p> : null}
+      {error ? <p>{error}</p> : null}
       {isLoading ? (
         <p className="loading">Starting to spread the news...</p>
       ) : (

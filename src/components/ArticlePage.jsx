@@ -6,6 +6,7 @@ import ArticleContent from './ArticleContent';
 
 function ArticlePage() {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
 
@@ -16,13 +17,14 @@ function ArticlePage() {
         setArticle(article);
         setIsLoading(false);
       })
-      .catch((error) => {
-        console.log(error, 'ruh roh!');
+      .catch(() => {
+        setError('Something went wrong');
       });
   }, [article_id]);
 
   return (
     <>
+      {error ? <p>{error}</p> : null}
       {isLoading ? (
         <p className="loading">
           Watching thousands of pages zoom past like the newspaper machines in

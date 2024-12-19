@@ -22,7 +22,7 @@ function TopicsBanner() {
 
   return (
     <>
-      {error ? <p>error</p> : null}
+      {error ? <p>{error}</p> : null}
       {isLoading ? (
         <p className="loading">Contemplating categories...</p>
       ) : (
