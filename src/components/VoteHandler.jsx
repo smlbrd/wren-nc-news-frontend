@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { patchVotesByArticleId } from '../api/api';
+import ErrorHandler from './ErrorHandler';
 
 function VoteHandler({ article_id, votes }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -17,7 +18,7 @@ function VoteHandler({ article_id, votes }) {
     setError(null);
     patchVotesByArticleId(article_id, { inc_votes: voteAdjustment }).catch(
       () => {
-        setError('Something went wrong. Please try again!');
+        setError(error);
         setVoteAdded((currentVotesAdded) => {
           return currentVotesAdded - 1;
         });
@@ -32,6 +33,7 @@ function VoteHandler({ article_id, votes }) {
   return (
     <>
       <div>
+        {error ? <ErrorHandler error={error} /> : null}
         {isClicked ? (
           <>
             <button onClick={handleClick}>Unlike</button>

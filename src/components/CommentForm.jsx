@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react';
 import { postCommentByArticleId } from '../api/api';
 import { UserContext } from '../contexts/UserContext';
+import ErrorHandler from './ErrorHandler';
 
 function CommentForm({ article_id, setCommentsList }) {
   const { user } = useContext(UserContext);
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const [newComment, setNewComment] = useState('');
 
   function handleChange(e) {
@@ -18,7 +19,7 @@ function CommentForm({ article_id, setCommentsList }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setError(false);
+    setError(null);
     setPending(true);
 
     postCommentByArticleId(article_id, {
@@ -34,14 +35,14 @@ function CommentForm({ article_id, setCommentsList }) {
         setNewComment('');
       })
       .catch(() => {
-        setError('Something went wrong. Please try again later!');
+        setError(error);
         setPending(false);
       });
   }
 
   return (
     <div>
-      {error ? <p>{error}</p> : null}
+      {error ? <ErrorHandler error={error} /> : null}
       <form onSubmit={handleSubmit}>
         <textarea
           className="comment-input"

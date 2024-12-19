@@ -2,28 +2,29 @@ import '../styles/TopicsBanner.css';
 import { useState, useEffect } from 'react';
 import { getAllTopics } from '../api/api';
 import { Link } from 'react-router';
+import ErrorHandler from './ErrorHandler';
 
 function TopicsBanner({ handleTopicChange }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const [topicList, setTopicList] = useState([]);
 
   useEffect(() => {
-    setError('');
+    setError(null);
     setIsLoading(true);
     getAllTopics()
       .then(({ topics }) => {
         setTopicList(topics);
         setIsLoading(false);
       })
-      .catch(() => {
-        setError('Something went wrong!');
+      .catch((error) => {
+        setError(error);
       });
   }, []);
 
   return (
     <>
-      {error ? <p>{error}</p> : null}
+      {error ? <ErrorHandler error={error} /> : null}
       {isLoading ? (
         <p className="loading">Contemplating categories...</p>
       ) : (
