@@ -9,3 +9,11 @@
 .topic-item {
   padding: 0.5rem;
 }
+
+.topic-item li {
+  text-decoration: none;
+}
+
+.topic-item li :hover {
+  text-decoration: underline;
+}

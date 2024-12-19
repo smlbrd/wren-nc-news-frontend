@@ -43,12 +43,12 @@ function ArticleList() {
     <>
       <>
         <TopicsBanner handleTopicChange={handleTopicChange} />
-        <SortBanner sortBy={sortBy} order={order} />
+        <SortBanner />
         {error ? <ErrorHandler error={error} /> : null}
         {isLoading ? (
           <p className="loading">Starting to spread the news...</p>
         ) : null}
-        <ul className="article-list">
+        <ul id="main" className="article-list">
           {articleList.map((article) => {
             return (
               <ArticleCard

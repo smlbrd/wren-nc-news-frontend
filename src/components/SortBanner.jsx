@@ -1,7 +1,7 @@
 import '../styles/SortBanner.css';
 import { useSearchParams } from 'react-router';
 
-function SortBanner({ sortBy, order }) {
+function SortBanner() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSortByChange = (e) => {
@@ -10,7 +10,6 @@ function SortBanner({ sortBy, order }) {
     setSearchParams((prevParams) => {
       const newParams = new URLSearchParams(prevParams);
       newParams.set('sort_by', newSortBy);
-      console.log(newParams);
       return newParams;
     });
   };
@@ -21,7 +20,6 @@ function SortBanner({ sortBy, order }) {
     setSearchParams((prevParams) => {
       const newParams = new URLSearchParams(prevParams);
       newParams.set('order', newOrder);
-      console.log(newParams);
       return newParams;
     });
   };
@@ -29,19 +27,21 @@ function SortBanner({ sortBy, order }) {
   return (
     <div className="sort-banner">
       <select
+        aria-label="Select filter to sort by"
         className="sort-dropdown"
         id="sort-select"
         defaultValue="sorts"
         onChange={handleSortByChange}
       >
         <option value="sorts" disabled>
-          Sort By
+          Sort by
         </option>
         <option value="created_at">Published</option>
         <option value="comment_count">Comments</option>
         <option value="votes">Votes</option>
       </select>
       <select
+        aria-label="Select order to sort articles"
         className="sort-dropdown"
         id="order-select"
         defaultValue="orders"
