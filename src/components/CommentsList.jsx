@@ -53,6 +53,7 @@ function CommentsList({ article_id }) {
             article_id={article_id}
             setCommentsList={setCommentsList}
           />
+          {!commentsList.length ? <p>No comments yet!</p> : null}
           <ul className="comments-list">
             {commentsList.map((comment) => {
               return (

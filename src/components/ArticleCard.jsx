@@ -26,7 +26,7 @@ function ArticleCard({
         {published} ({timeAgo})
       </div>
       {/* TODO: Replace with react-router Links to Topic views */}
-      <div>{topic}</div>
+      <Link to={`/articles?topic=${topic}`}>{topic}</Link>
       <div>{comment_count} comments</div>
       <div>{votes} votes</div>
     </li>

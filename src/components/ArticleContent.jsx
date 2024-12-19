@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import '../styles/ArticleContent.css';
 import timestampToDate from '../utils/timestampToDate';
 import VoteHandler from './VoteHandler';
@@ -26,7 +27,9 @@ function ArticleContent({
       <h2 className="article-author">{author}</h2>
       <div className="article-date">{date}</div>
       <div className="article-body">{body}</div>
-      <div className="article-topic">{topic}</div>
+      <Link to={`/articles?topic=${topic}`} className="article-topic">
+        {topic}
+      </Link>
       <div className="article-votes">
         <VoteHandler article_id={article_id} votes={votes} />
       </div>

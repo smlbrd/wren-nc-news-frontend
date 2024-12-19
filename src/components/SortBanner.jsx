@@ -4,14 +4,6 @@ import { useSearchParams } from 'react-router';
 function SortBanner({ sortBy, order }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  /* 
-  TODO: Current setup uses a change handler for each query param
-  However, trying to use a {name:value} object to make a dynamic handler
-  overwrites all queries when a new query is selected
-  
-  MORE RESEARCH REQUIRED!
-  */
-
   const handleSortByChange = (e) => {
     const newSortBy = e.target.value;
 
@@ -39,9 +31,12 @@ function SortBanner({ sortBy, order }) {
       <select
         className="sort-dropdown"
         id="sort-select"
-        value={sortBy}
+        defaultValue="sorts"
         onChange={handleSortByChange}
       >
+        <option value="sorts" disabled>
+          Sort By
+        </option>
         <option value="created_at">Published</option>
         <option value="comment_count">Comments</option>
         <option value="votes">Votes</option>
@@ -49,9 +44,12 @@ function SortBanner({ sortBy, order }) {
       <select
         className="sort-dropdown"
         id="order-select"
-        value={order}
+        defaultValue="orders"
         onChange={handleOrderChange}
       >
+        <option value="orders" disabled>
+          Order By
+        </option>
         <option value="DESC">Descending</option>
         <option value="ASC">Ascending</option>
       </select>
