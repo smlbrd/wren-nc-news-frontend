@@ -1,0 +1,8 @@
+.article-card {
+  margin: 0.1rem;
+}
+
+.article-card img {
+  max-width: 700px;
+  max-height: 700px;
+}

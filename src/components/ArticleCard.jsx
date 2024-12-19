@@ -1,3 +1,4 @@
+import '../styles/ArticleCard.css';
 import timestampToDate from '../utils/timestampToDate';
 import timestampFromNow from '../utils/timestampFromNow';
 import { Link } from 'react-router';

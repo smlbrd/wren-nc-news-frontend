@@ -27,12 +27,14 @@ function ArticlePage() {
 
   return (
     <>
-      {error ? <ErrorHandler error={error} /> : null}
       {isLoading ? (
         <p className="loading">
           Watching thousands of pages zoom past like the newspaper machines in
           the movies...
         </p>
+      ) : null}
+      {error ? (
+        <ErrorHandler error={error} />
       ) : (
         <>
           <ArticleContent {...article} />
