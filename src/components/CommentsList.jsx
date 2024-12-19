@@ -4,6 +4,7 @@ import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
 import { deleteCommentById } from '../api/api';
 import ErrorHandler from './ErrorHandler';
+import Loading from './Loading';
 
 function CommentsList({ article_id }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +47,7 @@ function CommentsList({ article_id }) {
     <>
       {error ? <ErrorHandler error={error} /> : null}
       {isLoading ? (
-        <p>Listening to the people...</p>
+        <Loading />
       ) : (
         <>
           <CommentForm

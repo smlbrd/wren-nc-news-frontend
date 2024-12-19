@@ -1,4 +1,6 @@
 .header {
+  position: relative;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -6,4 +8,19 @@
   right: 0px;
   padding: 1em;
   margin: 0;
+}
+
+.skip-links {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-links:focus {
+  position: static;
+  width: auto;
+  height: auto;
 }

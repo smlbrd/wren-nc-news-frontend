@@ -18,14 +18,12 @@ function ArticleCard({
   return (
     <li className="article-card">
       <Link to={`/articles/${article_id}`}>
-        {/* TODO: Add better alt text on the API side */}
         <img src={article_img_url} alt={`Banner image for ${title}`} />
         <h2>{title}</h2>
       </Link>
       <div>
         {published} ({timeAgo})
       </div>
-      {/* TODO: Replace with react-router Links to Topic views */}
       <Link to={`/articles?topic=${topic}`}>{topic}</Link>
       <div>{comment_count} comments</div>
       <div>{votes} votes</div>

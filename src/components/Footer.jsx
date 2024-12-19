@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer">
       <Link to={`/articles`}>
-        <h1>Home</h1>
+        <p>Home</p>
       </Link>
     </footer>
   );

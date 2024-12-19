@@ -7,12 +7,6 @@ function VoteHandler({ article_id, votes }) {
   const [voteAdded, setVoteAdded] = useState(0);
   const [error, setError] = useState(null);
 
-  {
-    /* TODO: Each article can be liked ONCE PER PAGE VISIT
-    Implement user context later to make it one vote per user
-     */
-  }
-
   function handleClick() {
     const voteAdjustment = !isClicked ? 1 : -1;
     setError(null);
@@ -33,7 +27,6 @@ function VoteHandler({ article_id, votes }) {
   return (
     <>
       <div>
-        {error ? <ErrorHandler error={error} /> : null}
         {isClicked ? (
           <>
             <button onClick={handleClick}>Unlike</button>
@@ -45,7 +38,7 @@ function VoteHandler({ article_id, votes }) {
             <p>{votes} likes</p>
           </>
         )}
-        {error && <p>{error}</p>}
+        {error ? <ErrorHandler error={error} /> : null}
       </div>
     </>
   );

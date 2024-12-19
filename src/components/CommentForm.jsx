@@ -51,6 +51,7 @@ function CommentForm({ article_id, setCommentsList }) {
           placeholder="Join the conversation"
           value={newComment}
           onChange={handleChange}
+          aria-required="true"
           required
         />
         <button

@@ -4,6 +4,7 @@ import { getArticleById } from '../api/api';
 import CommentsList from './CommentsList';
 import ArticleContent from './ArticleContent';
 import ErrorHandler from './ErrorHandler';
+import Loading from './Loading';
 
 function ArticlePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,12 +28,7 @@ function ArticlePage() {
 
   return (
     <>
-      {isLoading ? (
-        <p className="loading">
-          Watching thousands of pages zoom past like the newspaper machines in
-          the movies...
-        </p>
-      ) : null}
+      {isLoading ? <Loading /> : null}
       {error ? (
         <ErrorHandler error={error} />
       ) : (
