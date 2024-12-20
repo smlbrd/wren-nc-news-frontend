@@ -1,5 +1,6 @@
 .sort-banner {
   display: flex;
+  flex-direction: row;
   margin: 0 40px;
   justify-content: flex-start;
   align-items: start;

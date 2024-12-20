@@ -30,12 +30,20 @@ function TopicsBanner() {
         <Loading />
       ) : (
         <ul className="topic-banner">
-          <li className="topic-item" key="home">
+          <li
+            aria-label="select all articles"
+            className="topic-item"
+            key="home"
+          >
             <Link to={`/`}>latest</Link>
           </li>
           {topicList.map((topic) => {
             return (
-              <li className="topic-item" key={topic.slug}>
+              <li
+                aria-label={`select ${topic.slug} articles`}
+                className="topic-item"
+                key={topic.slug}
+              >
                 <Link to={`?topic=${topic.slug}`}>{topic.slug}</Link>
               </li>
             );

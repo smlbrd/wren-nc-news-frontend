@@ -18,7 +18,7 @@ function ArticleCard({
   return (
     <li className="article-card">
       <Link to={`/articles/${article_id}`}>
-        <img src={article_img_url} alt={title} />
+        <img src={article_img_url} alt="" />
         <h2>{title}</h2>
       </Link>
       <div>
