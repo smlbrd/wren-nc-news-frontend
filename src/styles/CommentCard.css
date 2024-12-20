@@ -28,3 +28,11 @@
   padding: 6px;
   border-radius: 6px;
 }
+
+.comment-delete {
+  background-color: #ff3232;
+}
+
+.comment-delete:hover {
+  color: white;
+}

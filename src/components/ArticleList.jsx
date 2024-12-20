@@ -18,15 +18,17 @@ function ArticleList() {
   const topic = searchParams.get('topic') || '';
   const sortBy = searchParams.get('sort_by') || 'created_at';
   const order = searchParams.get('order') || 'DESC';
-  const [limit, setLimit] = useState(10);
-  const [p, setP] = useState(1);
+  const limit = searchParams.get('limit') || 10;
+  const [articleCount, setArticleCount] = useState(0);
+  const p = searchParams.get('p') || 1;
 
   useEffect(() => {
     setError(null);
     setIsLoading(true);
     getAllArticles(topic, sortBy, order, limit, p)
-      .then(({ articles }) => {
+      .then(({ articles, articleCount }) => {
         setArticleList(articles);
+        setArticleCount(articleCount);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -35,22 +37,19 @@ function ArticleList() {
       });
   }, [topic, sortBy, order, limit, p]);
 
-  function handleTopicChange(newTopic) {
-    setSearchParams((prevParams) => {
-      const newParams = new URLSearchParams(prevParams);
-      newParams.set('topic', newTopic);
-      return newParams;
-    });
-  }
-
   return (
     <>
       <>
-        <TopicsBanner handleTopicChange={handleTopicChange} />
+        <TopicsBanner />
         <SortBanner />
+        <PageButtons
+          p={p}
+          limit={limit}
+          articleCount={articleCount}
+          setSearchParams={setSearchParams}
+        />
         {error ? <ErrorHandler error={error} /> : null}
         {isLoading ? <Loading /> : null}
-        <PageButtons p={p} setP={setP} />
         <ul id="main" className="article-list">
           {articleList.map((article) => {
             return (
@@ -62,6 +61,12 @@ function ArticleList() {
             );
           })}
         </ul>
+        <PageButtons
+          p={p}
+          limit={limit}
+          articleCount={articleCount}
+          setSearchParams={setSearchParams}
+        />
       </>
     </>
   );

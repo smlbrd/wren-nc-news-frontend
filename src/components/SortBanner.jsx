@@ -24,6 +24,16 @@ function SortBanner() {
     });
   };
 
+  const handleLimitChange = (e) => {
+    const newLimit = e.target.value;
+
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams);
+      newParams.set('limit', newLimit);
+      return newParams;
+    });
+  };
+
   return (
     <div className="sort-banner">
       <select
@@ -36,7 +46,7 @@ function SortBanner() {
         <option value="sorts" disabled>
           Sort by
         </option>
-        <option value="created_at">Published</option>
+        <option value="created_at">Date (Default)</option>
         <option value="comment_count">Comments</option>
         <option value="votes">Votes</option>
       </select>
@@ -48,10 +58,24 @@ function SortBanner() {
         onChange={handleOrderChange}
       >
         <option value="orders" disabled>
-          Order by
+          Order
         </option>
-        <option value="DESC">Descending</option>
+        <option value="DESC">Descending (Default)</option>
         <option value="ASC">Ascending</option>
+      </select>
+      <select
+        aria-label="Select number of articles shown"
+        className="sort-dropdown"
+        id="limit-select"
+        defaultValue="limits"
+        onChange={handleLimitChange}
+      >
+        <option value="limits" disabled>
+          Items per Page
+        </option>
+        <option value="20">20</option>
+        <option value="10">10 (Default)</option>
+        <option value="5">5</option>
       </select>
     </div>
   );

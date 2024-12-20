@@ -1,5 +1,5 @@
 import '../styles/CommentCard.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import timestampFromNow from '../utils/timestampFromNow';
 import { UserContext } from '../contexts/UserContext';
 
@@ -16,9 +16,7 @@ function CommentCard({
   const date = timestampFromNow(created_at);
 
   function handleDelete(comment_id) {
-    if (window.confirm('Are you sure?')) {
-      deleteComment(comment_id);
-    }
+    deleteComment(comment_id);
   }
 
   return (
@@ -35,7 +33,7 @@ function CommentCard({
       </div>
       {author === user.name && (
         <button
-          className="comment-button"
+          className="comment-button comment-delete"
           onClick={() => handleDelete(comment_id)}
           disabled={isDeleting}
         >

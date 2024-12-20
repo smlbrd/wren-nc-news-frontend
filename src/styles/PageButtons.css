@@ -1,0 +1,18 @@
+.page-controls {
+  display: flex;
+  justify-content: center;
+  margin: 4px;
+}
+
+.page-button {
+  margin: 4px;
+}
+
+.page-current {
+  text-decoration: underline;
+  border: 1px solid black;
+}
+
+.current-page {
+  text-decoration: underline;
+}

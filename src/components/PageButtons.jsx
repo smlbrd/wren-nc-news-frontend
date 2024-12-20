@@ -1,17 +1,53 @@
-function PageButtons({ p, setP }) {
-  function handlePrevClick() {
-    setP((currentP) => currentP + 1);
-  }
+import '../styles/PageButtons.css';
 
-  function handleNextClick() {}
+function PageButtons({ p, limit, articleCount, setSearchParams }) {
+  const handlePagination = (e) => {
+    const newPage = e;
+
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams);
+      newParams.set('p', newPage);
+      return newParams;
+    });
+  };
+
+  const paginationNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(articleCount.total_count / limit); i++) {
+    paginationNumbers.push(i);
+  }
 
   return (
     <div className="page-controls">
-      <button onClick={handlePrevClick} disabled={p === 1}>
+      <button
+        className="page-button"
+        onClick={() => {
+          handlePagination(+p - 1);
+        }}
+        disabled={p <= 1}
+      >
         Previous
       </button>
-      <span>Page {p}</span>
-      <button onClick={handleNextClick}>Next</button>
+      {paginationNumbers.map((pageNumber) => (
+        <button
+          className={+p === +pageNumber ? 'page-current' : 'page-button'}
+          key={pageNumber}
+          onClick={() => {
+            handlePagination(pageNumber);
+          }}
+        >
+          {pageNumber}
+        </button>
+      ))}
+      <button
+        className="page-button"
+        onClick={() => {
+          handlePagination(+p + 1);
+        }}
+        disabled={+p === +paginationNumbers.length}
+      >
+        Next
+      </button>
     </div>
   );
 }

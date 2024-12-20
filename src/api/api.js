@@ -10,13 +10,13 @@ const getAllTopics = () => {
   });
 };
 
-const getAllArticles = (topic, sort_by, order) => {
+const getAllArticles = (topic, sort_by, order, limit, p) => {
   return api
     .get('/articles', {
-      params: { topic, sort_by, order },
+      params: { topic, sort_by, order, limit, p },
     })
-    .then(({ data }) => {
-      return data;
+    .then(({ data: { articles, articleCount } }) => {
+      return { articles, articleCount };
     });
 };
 

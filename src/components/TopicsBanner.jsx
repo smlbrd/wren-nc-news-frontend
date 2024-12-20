@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import ErrorHandler from './ErrorHandler';
 import Loading from './Loading';
 
-function TopicsBanner({ handleTopicChange }) {
+function TopicsBanner() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [topicList, setTopicList] = useState([]);
@@ -36,14 +36,7 @@ function TopicsBanner({ handleTopicChange }) {
           {topicList.map((topic) => {
             return (
               <li className="topic-item" key={topic.slug}>
-                <Link
-                  to={`?topic=${topic.slug}`}
-                  onClick={() => {
-                    handleTopicChange(`${topic.slug}`);
-                  }}
-                >
-                  {topic.slug}
-                </Link>
+                <Link to={`?topic=${topic.slug}`}>{topic.slug}</Link>
               </li>
             );
           })}
