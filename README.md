@@ -69,8 +69,9 @@ That's it - you're good to go! Have fun, and thank so much for taking a look at 
 This project gratefully depends on the work of:
 
 - [React](https://react.dev/)
-- [react-router](https://reactrouter.com/)
-- [dayjs](https://day.js.org/)
+- [React Router](https://reactrouter.com/)
+- [Axios](https://axios-http.com/docs/api_intro)
+- [Day.js](https://day.js.org/)
 - [MUI](https://mui.com/)
 - [Vercel](https://vercel.com)
 
