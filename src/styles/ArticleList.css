@@ -2,11 +2,13 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  grid-column-gap: 32px;
+  grid-row-gap: 16px;
   list-style-type: none;
-  max-width: 16px auto;
-  font-size: 2vw;
+  margin: 1rem auto;
+  width: 90%;
+  justify-content: center;
+  font-size: 1rem;
 }
 
 .article-list img {
@@ -16,15 +18,21 @@
   object-fit: cover;
 }
 
+.article-list .article-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 @media (max-width: 768px) {
   .article-list {
     grid-template-columns: repeat(1, 1fr);
-    font-size: 3vw;
+    font-size: 2rem;
   }
 }
 @media (min-width: 769px) and (max-width: 1200px) {
   .article-list {
     grid-template-columns: repeat(2, 1fr);
-    font-size: 2.5vw;
+    font-size: 1.5rem;
   }
 }
