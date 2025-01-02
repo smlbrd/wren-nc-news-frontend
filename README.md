@@ -12,14 +12,15 @@
 
 ## 🦇 About <a name = "about"></a>
 
+This React project has been created to allow users to interact with data in a dynamic and responsive web application.
 
+It has been designed mobile-first to deliver a responsive experience across multiple devices, and it utilises reusable components and accessible design principles to ensure it can be used by the broadest range of users.
 
 A hosted version of this project is [available online here](https://wren-nc-news-frontend.vercel.app/articles).
 
-It is built on top of [a backend API project](https://github.com/smlbrd/wren-nc-news-api/blob/main/README.md).
+The backend API for this project [can be viewed here](https://github.com/smlbrd/wren-nc-news-api/blob/main/README.md).
 
-Clicking the link above will take you to a directory describing the endpoints accepted by the API, along with examples of accepted queries and typical responses.
-**Please be patient, as it can take a minute or two to spin up for the first time!**
+**Please be patient when clicking the links above, as they can take a minute or two to spin up for the first time!**
 
 ## 🚀 Getting Started <a name = "getting-started"></a>
 
