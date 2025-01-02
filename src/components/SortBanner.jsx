@@ -1,4 +1,4 @@
-import { FormControl, MenuItem, Select } from '@mui/material';
+import { MenuItem, Select } from '@mui/material';
 import '../styles/SortBanner.css';
 import { useSearchParams } from 'react-router';
 
@@ -41,6 +41,7 @@ function SortBanner() {
         aria-label="Select filter to sort by"
         className="sort-dropdown"
         id="sort-select"
+        name="sort-select"
         defaultValue="sorts"
         onChange={handleSortByChange}
       >
@@ -55,6 +56,7 @@ function SortBanner() {
         aria-label="Select order to sort articles"
         className="sort-dropdown"
         id="order-select"
+        name="order-select"
         defaultValue="orders"
         onChange={handleOrderChange}
       >
@@ -68,6 +70,7 @@ function SortBanner() {
         aria-label="Select number of articles shown"
         className="sort-dropdown"
         id="limit-select"
+        name="sort-select"
         defaultValue="limits"
         onChange={handleLimitChange}
       >

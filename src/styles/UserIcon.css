@@ -1,0 +1,9 @@
+.welcome-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.welcome-user-name {
+  padding: 8px;
+}

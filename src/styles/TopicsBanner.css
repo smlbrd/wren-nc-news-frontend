@@ -1,6 +1,6 @@
 .topic-banner {
   display: flex;
-  margin: 0;
+  margin-left: 1rem;
   justify-content: flex-start;
   align-items: start;
   list-style-type: none;
