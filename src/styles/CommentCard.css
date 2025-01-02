@@ -1,5 +1,6 @@
 .comment-card {
-  padding: 16px;
+  padding: 1.5rem;
+  padding-bottom: 0;
   list-style-type: none;
 }
 
