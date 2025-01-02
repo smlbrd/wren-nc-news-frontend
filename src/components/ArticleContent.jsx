@@ -31,9 +31,16 @@ function ArticleContent({
         {published} ({timeAgo})
       </div>
       <div className="article-body">{body}</div>
-      <Link to={`/articles?topic=${topic}`} className="article-topic">
-        {topic}
-      </Link>
+      <div className="article-topics">
+        Topics:
+        <Link
+          to={`/articles?topic=${topic}`}
+          className="article-topic"
+          sx={{ fontStyle: 'italic' }}
+        >
+          {topic}
+        </Link>
+      </div>
       <div className="article-votes">
         <VoteHandler article_id={article_id} votes={votes} />
       </div>

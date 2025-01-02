@@ -9,7 +9,7 @@ function Header() {
         Skip to content
       </a>
       <Link to={`/articles`}>
-        <h1>NC News</h1>
+        <h1 className="link-text">NC News</h1>
       </Link>
       <UserIcon />
     </header>

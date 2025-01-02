@@ -11,6 +11,11 @@
   background-color: #03aff7;
 }
 
+.header a {
+  color: black;
+  text-decoration: none;
+}
+
 .skip-links {
   position: absolute;
   left: -10000px;
