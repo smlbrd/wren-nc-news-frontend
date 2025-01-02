@@ -1,3 +1,4 @@
+import { MenuItem, Select } from '@mui/material';
 import '../styles/SortBanner.css';
 import { useSearchParams } from 'react-router';
 
@@ -36,47 +37,50 @@ function SortBanner() {
 
   return (
     <div className="sort-banner">
-      <select
+      <Select
         aria-label="Select filter to sort by"
         className="sort-dropdown"
         id="sort-select"
+        name="sort-select"
         defaultValue="sorts"
         onChange={handleSortByChange}
       >
-        <option value="sorts" disabled>
+        <MenuItem value="sorts" disabled>
           Sort by
-        </option>
-        <option value="created_at">Date (Default)</option>
-        <option value="comment_count">Comments</option>
-        <option value="votes">Votes</option>
-      </select>
-      <select
+        </MenuItem>
+        <MenuItem value="created_at">Date (Default)</MenuItem>
+        <MenuItem value="comment_count">Comments</MenuItem>
+        <MenuItem value="votes">Votes</MenuItem>
+      </Select>
+      <Select
         aria-label="Select order to sort articles"
         className="sort-dropdown"
         id="order-select"
+        name="order-select"
         defaultValue="orders"
         onChange={handleOrderChange}
       >
-        <option value="orders" disabled>
+        <MenuItem value="orders" disabled>
           Order
-        </option>
-        <option value="DESC">Descending (Default)</option>
-        <option value="ASC">Ascending</option>
-      </select>
-      <select
+        </MenuItem>
+        <MenuItem value="DESC">Descending (Default)</MenuItem>
+        <MenuItem value="ASC">Ascending</MenuItem>
+      </Select>
+      <Select
         aria-label="Select number of articles shown"
         className="sort-dropdown"
         id="limit-select"
+        name="sort-select"
         defaultValue="limits"
         onChange={handleLimitChange}
       >
-        <option value="limits" disabled>
+        <MenuItem value="limits" disabled>
           Items per Page
-        </option>
-        <option value="20">20</option>
-        <option value="10">10 (Default)</option>
-        <option value="5">5</option>
-      </select>
+        </MenuItem>
+        <MenuItem value="20">20</MenuItem>
+        <MenuItem value="10">10 (Default)</MenuItem>
+        <MenuItem value="5">5</MenuItem>
+      </Select>
     </div>
   );
 }

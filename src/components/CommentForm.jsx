@@ -23,7 +23,7 @@ function CommentForm({ article_id, setCommentsList }) {
     setPending(true);
 
     postCommentByArticleId(article_id, {
-      username: user.name,
+      username: user.username,
       body: newComment,
     })
       .then((newlyPostedComment) => {

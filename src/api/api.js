@@ -48,6 +48,12 @@ const patchVotesByArticleId = (articleId, requestBody) => {
   return api.patch(`/articles/${articleId}`, requestBody);
 };
 
+const getUserByUsername = (username) => {
+  return api.get(`/users/${username}`).then((response) => {
+    console.log(response);
+  });
+};
+
 export {
   getAllTopics,
   getAllArticles,

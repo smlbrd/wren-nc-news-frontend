@@ -4,6 +4,7 @@ import { getAllTopics } from '../api/api';
 import { Link } from 'react-router';
 import ErrorHandler from './ErrorHandler';
 import Loading from './Loading';
+import { capitalize } from '@mui/material';
 
 function TopicsBanner() {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,18 +30,30 @@ function TopicsBanner() {
       {isLoading ? (
         <Loading />
       ) : (
-        <ul className="topic-banner">
-          <li className="topic-item" key="home">
-            <Link to={`/`}>latest</Link>
-          </li>
-          {topicList.map((topic) => {
-            return (
-              <li className="topic-item" key={topic.slug}>
-                <Link to={`?topic=${topic.slug}`}>{topic.slug}</Link>
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <ul className="topic-banner">
+            <li
+              aria-label="select all articles"
+              className="topic-item"
+              key="home"
+            >
+              <Link to={`/`}>Latest</Link>
+            </li>
+            {topicList.map((topic) => {
+              return (
+                <li
+                  aria-label={`select ${topic.slug} articles`}
+                  className="topic-item"
+                  key={topic.slug}
+                >
+                  <Link to={`?topic=${topic.slug}`}>
+                    {capitalize(topic.slug)}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </>
       )}
     </>
   );

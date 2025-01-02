@@ -2,6 +2,7 @@ import '../styles/ArticleCard.css';
 import timestampToDate from '../utils/timestampToDate';
 import timestampFromNow from '../utils/timestampFromNow';
 import { Link } from 'react-router';
+import { Paper } from '@mui/material';
 
 function ArticleCard({
   article_id,
@@ -16,18 +17,21 @@ function ArticleCard({
   const timeAgo = String(timestampFromNow(created_at));
 
   return (
-    <li className="article-card">
+    <Paper className="article-card">
       <Link to={`/articles/${article_id}`}>
-        <img src={article_img_url} alt={title} />
-        <h2>{title}</h2>
+        <img src={article_img_url} alt="" />
+        <div className="article-card article-card-contents">
+          <h2>{title}</h2>
+          <div>
+            {published} ({timeAgo})
+          </div>
+
+          <div className="secondary-info">{comment_count} comments</div>
+          <div className="secondary-info">{votes} votes</div>
+          <div className="secondary-info">{topic}</div>
+        </div>
       </Link>
-      <div>
-        {published} ({timeAgo})
-      </div>
-      <Link to={`/articles?topic=${topic}`}>{topic}</Link>
-      <div>{comment_count} comments</div>
-      <div>{votes} votes</div>
-    </li>
+    </Paper>
   );
 }
 

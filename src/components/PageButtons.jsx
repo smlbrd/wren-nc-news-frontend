@@ -1,4 +1,5 @@
 import '../styles/PageButtons.css';
+import Button from '@mui/material/Button';
 
 function PageButtons({ p, limit, articleCount, setSearchParams }) {
   const handlePagination = (e) => {
@@ -19,7 +20,9 @@ function PageButtons({ p, limit, articleCount, setSearchParams }) {
 
   return (
     <div className="page-controls">
-      <button
+      <Button
+        aria-label="select previous page"
+        variant="outlined"
         className="page-button"
         onClick={() => {
           handlePagination(+p - 1);
@@ -27,9 +30,11 @@ function PageButtons({ p, limit, articleCount, setSearchParams }) {
         disabled={p <= 1}
       >
         Previous
-      </button>
+      </Button>
       {paginationNumbers.map((pageNumber) => (
-        <button
+        <Button
+          aria-label={`select page ${pageNumber}`}
+          variant={+p === +pageNumber ? 'contained' : 'outlined'}
           className={+p === +pageNumber ? 'page-current' : 'page-button'}
           key={pageNumber}
           onClick={() => {
@@ -37,9 +42,11 @@ function PageButtons({ p, limit, articleCount, setSearchParams }) {
           }}
         >
           {pageNumber}
-        </button>
+        </Button>
       ))}
-      <button
+      <Button
+        aria-label="select next page"
+        variant="outlined"
         className="page-button"
         onClick={() => {
           handlePagination(+p + 1);
@@ -47,7 +54,7 @@ function PageButtons({ p, limit, articleCount, setSearchParams }) {
         disabled={+p === +paginationNumbers.length}
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { patchVotesByArticleId } from '../api/api';
 import ErrorHandler from './ErrorHandler';
+import { Button } from '@mui/material';
 
 function VoteHandler({ article_id, votes }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -22,12 +23,16 @@ function VoteHandler({ article_id, votes }) {
       <div>
         {isClicked ? (
           <>
-            <button onClick={handleClick}>Unlike</button>
+            <Button variant="outlined" onClick={handleClick}>
+              Unlike
+            </Button>
             <p>{votes + 1} likes</p>
           </>
         ) : (
           <>
-            <button onClick={handleClick}>Like</button>
+            <Button variant="outlined" onClick={handleClick}>
+              Like
+            </Button>
             <p>{votes} likes</p>
           </>
         )}
