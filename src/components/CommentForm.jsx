@@ -61,6 +61,7 @@ function CommentForm({ article_id, setCommentsList }) {
           type="reset"
           value="reset"
           onClick={handleReset}
+          variant="outlined"
         >
           Reset
         </Button>
@@ -69,6 +70,7 @@ function CommentForm({ article_id, setCommentsList }) {
           type="submit"
           value="submit"
           disabled={pending}
+          variant="outlined"
         >
           {pending ? 'Submitting...' : 'Submit'}
         </Button>

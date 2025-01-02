@@ -1,8 +1,6 @@
 .comment-card {
-  padding: 1rem;
+  padding: 16px;
   list-style-type: none;
-  position: relative;
-  margin: 20px auto;
 }
 
 .comment-author {
@@ -21,12 +19,13 @@
 
 .comment-input {
   display: flex;
-  padding: 20px;
+  padding: 16px;
+  margin: 8px;
 }
 
 .comment-button {
-  margin: 12px;
-  padding: 6px;
+  margin: 16px;
+  padding: 8px;
   border-radius: 6px;
 }
 
