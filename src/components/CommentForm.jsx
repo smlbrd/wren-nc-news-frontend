@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { postCommentByArticleId } from '../api/api';
 import { UserContext } from '../contexts/UserContext';
 import ErrorHandler from './ErrorHandler';
+import { Button } from '@mui/material';
 
 function CommentForm({ article_id, setCommentsList }) {
   const { user } = useContext(UserContext);
@@ -55,22 +56,22 @@ function CommentForm({ article_id, setCommentsList }) {
           aria-required="true"
           required
         />
-        <button
+        <Button
           className="comment-button"
           type="reset"
           value="reset"
           onClick={handleReset}
         >
           Reset
-        </button>
-        <button
+        </Button>
+        <Button
           className="comment-button"
           type="submit"
           value="submit"
           disabled={pending}
         >
           {pending ? 'Submitting...' : 'Submit'}
-        </button>
+        </Button>
       </form>
     </div>
   );
