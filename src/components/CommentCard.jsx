@@ -1,7 +1,8 @@
 import '../styles/CommentCard.css';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import timestampFromNow from '../utils/timestampFromNow';
 import { UserContext } from '../contexts/UserContext';
+import { Button } from '@mui/material';
 
 function CommentCard({
   author,
@@ -32,13 +33,15 @@ function CommentCard({
         {comment_id}
       </div>
       {author === user.username && (
-        <button
+        <Button
           className="comment-button comment-delete"
           onClick={() => handleDelete(comment_id)}
           disabled={isDeleting}
+          variant="outlined"
+          color="error"
         >
           {isDeleting ? 'Deleting...' : 'Delete'}
-        </button>
+        </Button>
       )}
     </li>
   );

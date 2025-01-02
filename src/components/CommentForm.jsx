@@ -1,3 +1,4 @@
+import '../styles/CommentForm.css';
 import { useContext, useState } from 'react';
 import { postCommentByArticleId } from '../api/api';
 import { UserContext } from '../contexts/UserContext';
@@ -41,7 +42,7 @@ function CommentForm({ article_id, setCommentsList }) {
   }
 
   return (
-    <div>
+    <div className="comment-form">
       {error ? <ErrorHandler error={error} /> : null}
       <form onSubmit={handleSubmit}>
         <textarea
