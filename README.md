@@ -4,7 +4,7 @@
 
 - [About](#about)
 - [Getting Started](#getting-started)
-  - [Prerequsites](#prerequisites)
+  - [Prerequisites](#prerequisites)
   - [Cloning this repository](#cloning)
   - [Installing dependencies](#dependencies)
   - [Hosting the app locally](#localhost)
