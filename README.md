@@ -1,4 +1,4 @@
-# NC News API
+# NC News Web App
 
 ## 📖 Table of Contents
 
